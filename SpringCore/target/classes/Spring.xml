@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+
+	<!-- <bean name="Person" class="com.bridgelabz.springcore.autowiring.bytype.Person">
+	<property name="userName" value="Shivani Kumari"></property>
+	<property name="Password" value="shivani123"></property>
+	</bean>
+	
+	<bean name="address" class="com.bridgelabz.springcore.autowiring.bytype.address" autowire="byType">
+	</bean> -->
+	<!-- <bean name="employee"
+		class="com.bridgelabz.springcore.autowiring.Employee">
+		<property name="name" value="Shivani Kumari"></property>
+		<property name="id" value="1"></property>
+	</bean>
+	<bean name="EmployeebyName"
+		class="com.bridgelabz.springcore.autowiring.EmployeeService"
+		autowire="byName">
+	</bean> -->
+	
+	<bean id = "textEditor" class = "com.bridgelabz.springcore.autowiring.byConstructor.TextEditor" 
+      autowire = "constructor">
+      <!--  <constructor-arg  ref = "spellChecker" />-->
+      <constructor-arg value = "Generic Text Editor"/> 
+   </bean>
+
+   <!-- Definition for spellChecker bean -->
+   <bean id = "SpellChecker" class = "com.bridgelabz.springcore.autowiring.byConstructor.SpellChecker"></bean>
+
+</beans>
