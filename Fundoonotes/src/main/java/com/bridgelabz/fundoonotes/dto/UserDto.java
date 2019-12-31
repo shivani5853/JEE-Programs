@@ -30,7 +30,7 @@ public class UserDto {
 		this.conformPassword = conformPassword;
 	}
 	@Size(max=10,message = "Invalied Phone Number")
-	private int phoneNumber;
+	private long phoneNumber;
 	
 	public String getFirstName() {
 		return firstName;
@@ -56,10 +56,10 @@ public class UserDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 }

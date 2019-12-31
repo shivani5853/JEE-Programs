@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -34,7 +34,7 @@ public class User {
 	private String password;
 
 	@Column(name="phoneNumber" )
-	private int phoneNumber;
+	private long phoneNumber;
 
 	public int getId() {
 		return id;
@@ -76,11 +76,11 @@ public class User {
 		this.password = password;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -88,7 +88,7 @@ public class User {
 
 	}
 
-	public User(int id, String firstName, String lastName, String email, String password, int phoneNumber) {
+	public User(int id, String firstName, String lastName, String email, String password, long phoneNumber) {
 		super();
 		this.id = id;
 		this.firstName = firstName;

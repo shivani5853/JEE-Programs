@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotes.dto.UserDto;
 import com.bridgelabz.fundoonotes.model.User;
+import com.bridgelabz.fundoonotes.model.UserLogin;
 import com.bridgelabz.fundoonotes.repository.UserRepository;
 import com.bridgelabz.fundoonotes.service.ServiceInf;
 
@@ -19,18 +20,28 @@ public class ServiceImplementation implements ServiceInf{
 	private UserRepository userRepository; 
 	
 	 @Override
-	public void register(UserDto userDto) {
+	public boolean register(UserDto userDto) {
 		try {
-			/*
-			 * user.setFirstName(userDto.getFirstName());
-			 * user.setLastName(userDto.getLastName()); user.setEmail(userDto.getEmail());
-			 * user.setPhoneNumber(userDto.getPhoneNumber());
-			 * user.setPassword(userDto.getPassword());
-			 */
-			BeanUtils.copyProperties(userDto, User.class);
+			
+//			 user.setFirstName(userDto.getFirstName());
+//			 user.setLastName(userDto.getLastName());
+			//user.setEmail(userDto.getEmail());
+//			 user.setPhoneNumber(userDto.getPhoneNumber());
+//			 user.setPassword(userDto.getPassword());
+			 
+			BeanUtils.copyProperties(userDto, user);
 			userRepository.save(user);
+			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return false;
+	}
+
+	@Override
+	public User login(UserLogin userLogin) {
+		
+		return null;
 	}
 
 	
