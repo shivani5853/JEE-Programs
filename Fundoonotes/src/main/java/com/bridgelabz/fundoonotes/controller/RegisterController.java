@@ -1,7 +1,6 @@
 package com.bridgelabz.fundoonotes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +23,6 @@ public class RegisterController {
 	@Autowired
 	private JwtGenerator jwtGenerator;
 
-//	@GetMapping("/User")
-//	public String getUser()
-//	{
-//		return "Shivani";
-//	}
-//	
-
 	@PostMapping("/users/register")
 	public ResponseEntity<Responses> register(@RequestBody UserDto userDto) {
 
@@ -45,7 +37,6 @@ public class RegisterController {
 	}
 
 	@PostMapping("/user/login")
-	@CachePut(key = "#token", value = "Id")
 	public ResponseEntity<Responses> login(@RequestBody UserLogin userLogin) {
 		User user = service.login(userLogin);
 

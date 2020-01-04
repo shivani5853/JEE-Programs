@@ -1,5 +1,7 @@
 package com.bridgelabz.fundoonotes.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,26 +17,42 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 
-	@Column(name="firstName",nullable=false)
+	@Column(name = "firstName", nullable = false)
 	@NotEmpty(message = "Invalied FirstName")
 	private String firstName;
 
-	@Column(name="lastName",nullable = false)
+	@Column(name = "lastName", nullable = false)
 	@NotEmpty(message = "Invalied LastName")
 	private String lastName;
 
-	@Column(name="email",nullable = false,unique = true)
+	@Column(name = "email", nullable = false, unique = true)
 	@NotEmpty(message = "Invalied Email Id")
 	private String email;
 
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
 
-	@Column(name="phoneNumber" )
+	@Column(name = "phoneNumber")
 	private long phoneNumber;
+
+	@Column(columnDefinition = "boolean default false")
+	private boolean isVerified;
+
+	@Column(name = "createdAt")
+	private Date createdAt;
+
+	
+
+	public boolean isVerified() {
+		return isVerified;
+	}
+
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
 
 	public int getId() {
 		return id;
@@ -88,7 +106,18 @@ public class User {
 
 	}
 
-	public User(int id, String firstName, String lastName, String email, String password, long phoneNumber) {
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public User(int id, @NotEmpty(message = "Invalied FirstName") String firstName,
+			@NotEmpty(message = "Invalied LastName") String lastName,
+			@NotEmpty(message = "Invalied Email Id") String email, String password, long phoneNumber,
+			boolean isVerified, Date createdAt) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -96,6 +125,10 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
+		this.isVerified = isVerified;
+		this.createdAt = createdAt;
 	}
 
+
+	
 }
