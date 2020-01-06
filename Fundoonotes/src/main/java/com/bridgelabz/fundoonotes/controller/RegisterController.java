@@ -3,6 +3,7 @@ package com.bridgelabz.fundoonotes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,6 @@ public class RegisterController {
 	@PostMapping("/user/login")
 	public ResponseEntity<Responses> login(@RequestBody UserLogin userLogin) {
 		User user = service.login(userLogin);
-
 		if (user != null) {
 			String token = jwtGenerator.jwtToken(user.getId());
 			return ResponseEntity.status(HttpStatus.ACCEPTED).header("Login Successfully", userLogin.getEmail())
@@ -50,4 +50,14 @@ public class RegisterController {
 					.body(new Responses("Sorry Something went wrong!!!", 400, userLogin));
 		}
 	}
+
+	@PostMapping("/user/verify/{token}")
+	public ResponseEntity<Responses> verifyUser(@PathVariable("token") String token) {
+		System.out.println("Token for verify " + token);
+		boolean verify = service.verify(token);
+
+		return (verify) ? ResponseEntity.status(HttpStatus.ACCEPTED).body(new Responses("Verified", 200))
+				: ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Responses("Not verified", 400));
+	}
+
 }

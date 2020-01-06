@@ -15,4 +15,6 @@ public interface ServiceInf {
 	public List<User> findAllDetails();
 
 	public Map<String, Object> findByUserId(int id);
+
+	public boolean verify(String token);
 }
