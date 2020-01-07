@@ -11,8 +11,13 @@ import javax.persistence.Table;
 
 import javax.validation.constraints.NotEmpty;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "User")
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 	@Id
@@ -102,10 +107,6 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public User() {
-
-	}
-
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -113,22 +114,4 @@ public class User {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-
-	public User(int id, @NotEmpty(message = "Invalied FirstName") String firstName,
-			@NotEmpty(message = "Invalied LastName") String lastName,
-			@NotEmpty(message = "Invalied Email Id") String email, String password, long phoneNumber,
-			boolean isVerified, Date createdAt) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
-		this.isVerified = isVerified;
-		this.createdAt = createdAt;
-	}
-
-
-	
 }
